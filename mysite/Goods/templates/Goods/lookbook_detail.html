@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="hero-slider">
+    <div class="hero-items owl-carousel">
+        <div class="single-slider-item set-bg" data-setbg="{{ lookbook.photo.url }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>{{ lookbook.small_description }}</h1>
+                        <h2>{{ lookbook.title }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div style="word-break: break-all; width: 50%">
+    {{ lookbook.description }}
+</div>
+
+
+{% endblock %}
