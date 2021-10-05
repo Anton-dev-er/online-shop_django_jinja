@@ -5,198 +5,130 @@
 {% block content %}
 
 <section class="hero-slider">
-    <div class="hero-items owl-carousel">
-        {% for i in lookbooks %}
-        <div class="single-slider-item set-bg" data-setbg="{{ i.photo.url }}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>{{ i.small_description }}</h1>
-                        <h2>{{ i.title }}</h2>
-                        <a href="{{ i.get_absolute_url }}" class="primary-btn">{{ i.pk }}</a>
-                    </div>
-                </div>
-            </div>
+  <div class="hero-items owl-carousel">
+    {% for i in lookbooks %}
+    <div class="single-slider-item set-bg" data-setbg="{{ i.photo.url }}">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1>{{ i.small_description }}</h1>
+            <h2>{{ i.title }}</h2>
+            <a href="{{ i.get_absolute_url }}" class="primary-btn">{{ i.pk }}</a>
+          </div>
         </div>
-        {% endfor %}
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </section>
 
 <section class="features-section spad">
-    <div class="features-ads">
-        <div class="container">
-            <div class="row">
-                {% for i in featuresads %}
-                <div class="col-lg-4">
-                    <div class="single-features-ads">
-                        <img src="{{ i.photo.url }}" alt="">
-                        <h4>{{ i.title }}</h4>
-                        <p>{{ i.description}} </p>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+  <div class="features-ads">
+    <div class="container">
+      <div class="row">
+        {% for i in featuresads %}
+        <div class="col-lg-4">
+          <div class="single-features-ads">
+            <img src="{{ i.photo.url }}" alt="">
+            <h4>{{ i.title }}</h4>
+            <p>{{ i.description}} </p>
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
-    <!-- Features Box -->
-    <div class="features-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="single-box-item first-box">
-                                <img src="{% static 'img/f-box-1.jpg' %}" alt="">
-                                <div class="box-text">
-                                    <span class="trend-year">2019 Party</span>
-                                    <h2>Jewelry</h2>
-                                    <span class="trend-alert">Trend Allert</span>
-                                    <a href="#" class="primary-btn">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="single-box-item second-box">
-                                <img src="{% static 'img/f-box-2.jpg' %}" alt="">
-                                <div class="box-text">
-                                    <span class="trend-year">2019 Trend</span>
-                                    <h2>Footwear</h2>
-                                    <span class="trend-alert">Bold & Black</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-box-item large-box">
-                        <img src="{% static 'img/f-box-3.jpg' %}" alt="">
-                        <div class="box-text">
-                            <span class="trend-year">2019 Party</span>
-                            <h2>Collection</h2>
-                            <div class="trend-alert">Trend Allert</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
+  <!-- Features Box -->
+<!--  <div class="features-box">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col-lg-6">-->
+<!--          <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--              <div class="single-box-item first-box">-->
+<!--                <img src="{% static 'img/f-box-1.jpg' %}" alt="">-->
+<!--                <div class="box-text">-->
+<!--                  <span class="trend-year">2019 Party</span>-->
+<!--                  <h2>Jewelry</h2>-->
+<!--                  <span class="trend-alert">Trend Allert</span>-->
+<!--                  <a href="#" class="primary-btn">See More</a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-12">-->
+<!--              <div class="single-box-item second-box">-->
+<!--                <img src="{% static 'img/f-box-2.jpg' %}" alt="">-->
+<!--                <div class="box-text">-->
+<!--                  <span class="trend-year">2019 Trend</span>-->
+<!--                  <h2>Footwear</h2>-->
+<!--                  <span class="trend-alert">Bold & Black</span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-lg-6">-->
+<!--          <div class="single-box-item large-box">-->
+<!--            <img src="{% static 'img/f-box-3.jpg' %}" alt="">-->
+<!--            <div class="box-text">-->
+<!--              <span class="trend-year">2019 Party</span>-->
+<!--              <h2>Collection</h2>-->
+<!--              <div class="trend-alert">Trend Allert</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </section>
 
 <section class="latest-products spad">
-    <div class="container">
-        <div class="product-filter">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <h2>Latest Products</h2>
-                    </div>
-                    <ul class="product-controls">
-                        <li data-filter="*">All</li>
-                        <li data-filter=".dresses">Dresses</li>
-                        <li data-filter=".bags">Bags</li>
-                        <li data-filter=".shoes">Shoes</li>
-                        <li data-filter=".accesories">Accesories</li>
-                    </ul>
-                </div>
+  <div class="container">
+    <div class="product-filter">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="section-title">
+            <h2>Latest Products</h2>
+          </div>
+          <ul class="product-controls">
+            <li data-filter=".all">All</li>
+            {% for cat in categories %}
+            <div class="btn-group">
+              <button type="button" class="btn btn-light">{{ cat.title }}</button>
+              <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                {% for subcat in cat.subcategories_set.all %}
+                <li><a class="dropdown-item" data-filter=".{{ subcat.slug }}">{{ subcat }}</a></li>
+                {% endfor %}
+              </ul>
             </div>
+            {% endfor %}
+          </ul>
         </div>
-        <div class="row" id="product-list">
-            <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                <div class="single-product-item">
-                    <figure>
-                        <a href="#"><img src="{% static 'img/products/img-1.jpg' %}" alt=""></a>
-                        <div class="p-status">new</div>
-                    </figure>
-                    <div class="product-text">
-                        <h6>Green Dress with details</h6>
-                        <p>$22.90</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                <div class="single-product-item">
-                    <figure>
-                        <a href="#"><img src="{% static 'img/products/img-2.jpg' %}" alt=""></a>
-                        <div class="p-status sale">sale</div>
-                    </figure>
-                    <div class="product-text">
-                        <h6>Yellow Maxi Dress</h6>
-                        <p>$25.90</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mix all shoes accesories">
-                <div class="single-product-item">
-                    <figure>
-                        <a href="#"><img src="{% static 'img/products/img-3.jpg' %}" alt=""></a>
-                        <div class="p-status">new</div>
-                    </figure>
-                    <div class="product-text">
-                        <h6>One piece bodysuit</h6>
-                        <p>$19.90</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mix all shoes accesories">
-                <div class="single-product-item">
-                    <figure>
-                        <a href="#"><img src="{% static 'img/products/img-4.jpg' %}" alt=""></a>
-                        <div class="p-status popular">popular</div>
-                    </figure>
-                    <div class="product-text">
-                        <h6>Blue Dress with details</h6>
-                        <p>$35.50</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mix all dresses shoes">
-                <div class="single-product-item">
-                    <figure>
-                        <a href="#"><img src="{% static 'img/products/img-5.jpg' %}" alt=""></a>
-                        <div class="p-status">new</div>
-                    </figure>
-                    <div class="product-text">
-                        <h6>Green Dress with details</h6>
-                        <p>$22.90</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mix all accesories bags">
-                <div class="single-product-item">
-                    <figure>
-                        <a href="#"><img src="{% static 'img/products/img-6.jpg' %}" alt=""></a>
-                        <div class="p-status sale">sale</div>
-                    </figure>
-                    <div class="product-text">
-                        <h6>Yellow Maxi Dress</h6>
-                        <p>$25.90</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                <div class="single-product-item">
-                    <figure>
-                        <a href="#"><img src="{% static 'img/products/img-7.jpg' %}" alt=""></a>
-                    </figure>
-                    <div class="product-text">
-                        <h6>One piece bodysuit</h6>
-                        <p>$19.90</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mix all accesories bags">
-                <div class="single-product-item">
-                    <figure>
-                        <a href="#"><img src="{% static 'img/products/img-8.jpg' %}" alt=""></a>
-                        <div class="p-status popular">popular</div>
-                    </figure>
-                    <div class="product-text">
-                        <h6>Blue Dress with details</h6>
-                        <p>$35.50</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <div class="row" id="product-list">
+      {% for cat in subcategories %}
+      {% for subcat in cat.goods_set.all %}
+      <div class="col-lg-3 col-sm-6 mix {{ cat.slug }}">
+        <div class="single-product-item">
+          <figure>
+            <a href="#"><img src="{{ subcat.photo.url }}" alt=""></a>
+            <div class="p-status">new</div>
+          </figure>
+          <div class="product-text">
+            <h6>{{ subcat.title }}</h6>
+            <p>{{ subcat.price }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
 </section>
 {% endblock %}

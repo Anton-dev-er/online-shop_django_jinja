@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DeleteView
 from django.http import HttpResponse
 
-from .models import LookBook, FeaturesAds
+from .models import LookBook, FeaturesAds, Categories, SubCategories
 
 
 class HomePage(ListView):
@@ -13,6 +13,8 @@ class HomePage(ListView):
         context['title'] = 'Главная страница'
         context['lookbooks'] = LookBook.objects.filter(is_published=True)
         context['featuresads'] = FeaturesAds.objects.filter(is_published=True)
+        context['categories'] = Categories.objects.all()
+        context['subcategories'] = SubCategories.objects.all()
         return context
 
     def get_queryset(self):
