@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% block full_list_categories %}
+{{ block.super }}
+{% endblock %}
+<section class="categories-page spad">
+  <div class="row">
+    {% for sub_cat in subcategories_by_broad_categories %}
+    {% for i in sub_cat.goods_set.all %}
+    {% include 'inc/goods_output.html' %}
+    {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

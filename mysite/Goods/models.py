@@ -18,7 +18,7 @@ class Goods(m.Model):
     updated_dt = m.DateTimeField(auto_now=True)
     is_published = m.BooleanField(default=True)
 
-    category = m.ForeignKey('SubCategories', on_delete=m.PROTECT, null=True)
+    sub_category = m.ForeignKey('SubCategories', on_delete=m.PROTECT, null=True)
 
     size = m.CharField(max_length=50, default="Потом допилю(розмір)")
     brand = m.CharField(max_length=50, default="Потом допилю(бренд)")
@@ -33,6 +33,9 @@ class Goods(m.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('goods_in_detail', kwargs={'slug': self.slug})
 
 
 class LookBook(m.Model):
@@ -83,6 +86,9 @@ class BroadCategories(m.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('show_goods_by_broad_categories', kwargs={'broad_cat': self.slug})
+
 
 class Categories(m.Model):
     title = m.CharField(max_length=200)
@@ -93,16 +99,11 @@ class Categories(m.Model):
     slug = m.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
-        cleaned_title = self.title.split(":")[0]
-        self.title = f"{cleaned_title}:{self.broad_category.title}"
         self.slug = slugify(self.title)
         super(Categories, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse('---', kwargs={'slug': self.slug})
 
 
 class SubCategories(m.Model):
@@ -116,16 +117,19 @@ class SubCategories(m.Model):
     slug = m.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
-        cleaned_title = self.title.split(":")[0]
-        self.title = f"{cleaned_title}:{self.category.title}:{self.broad_category.title}"
-        self.slug = slugify(self.title)
+        self.title = self.title.split("|")[0]
+        self.slug = slugify(f"{self.title}:{self.category.title}:{self.broad_category.title}")
+
+        self.title = f"{self.title}|{self.broad_category}"
         super(SubCategories, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.title.split(":")[0]
+        return self.title.split('|')[0]
 
     def get_absolute_url(self):
-        return reverse('---', kwargs={'slug': self.slug})
+        return reverse('show_goods_by_sub_cat', kwargs={
+            'sub_cat': self.slug,
+            'broad_cat': self.slug.split("-")[-1]})
 
 
 class Status(m.Model):

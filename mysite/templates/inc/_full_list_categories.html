@@ -1,0 +1,46 @@
+{% load test_tag %}
+<div class="container">
+  <div class="product-filter">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-title">
+          <h2>Products</h2>
+        </div>
+        <ul class="product-controls">
+          <div class="btn-group">
+
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+              Виберіть Категорію
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              {% for b_cat in broad_categories %}
+              {% if b_cat.subcategories_set.all|length %}
+              <li><a class="dropdown-item" href="{{ b_cat.get_absolute_url }}">{{ b_cat.title }}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+
+          {% for cat in categories %}
+          {% if cat.subcategories_set.exists %}
+          <div class="btn-group">
+            <button type="button" class="btn btn-light">{{ cat.title }}</button>
+            <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              {% for subcat in cat.subcategories_set.all %}
+              <li><a href="{{ subcat.get_absolute_url }}" class="dropdown-item">
+                {{ subcat }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

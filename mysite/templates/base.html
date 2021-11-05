@@ -24,6 +24,8 @@
   <link rel="stylesheet" href="{% static 'Violet/css/slicknav.min.css' %}">
   <link rel="stylesheet" href="{% static 'Violet/css/style.css' %}">
 
+  <link rel="stylesheet" href="{% static 'MyCss/cat_menu.css' %}">
+
   <!-- Bootstrap-->
   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 
@@ -47,7 +49,13 @@
 {% include 'inc/_header-sections.html' %}
 {% include 'inc/_header-info.html' %}
 
-{% block content %}Content{% endblock %}
+{% block content %}
+
+{% block full_list_categories %}
+{% include 'inc/_full_list_categories.html' %}
+{% endblock full_list_categories %}
+Empty
+{% endblock %}
 
 <div class="logo-section spad">
   <div class="logo-items owl-carousel">
